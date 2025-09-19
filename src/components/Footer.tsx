@@ -39,12 +39,13 @@ const Footer = () => {
               >
                 Projetos
               </a>
-              <a
+              {/*              <a
                 href="#ai-chat"
                 className="block text-muted-foreground hover:text-primary transition-colors"
               >
                 IA Chat
-              </a>
+              </a> */}
+
             </nav>
           </div>
 

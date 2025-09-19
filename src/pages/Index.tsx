@@ -27,10 +27,10 @@ const Index = () => {
           <Projects />
         </section>
 
-        {/* Se o AIChat já tiver id="ai-chat", remova o wrapper */}
+        {/* Se o AIChat já tiver id="ai-chat", remova o wrapper 
         <section id="ai-chat" className="scroll-mt-24">
           <AIChat />
-        </section>
+        </section>*/}
 
         {/* Âncora para “Contato” apontar para o rodapé */}
         <div id="contact" className="scroll-mt-24" aria-hidden />

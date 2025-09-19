@@ -12,12 +12,11 @@ const Header = () => {
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-
+  {/* href: "#ai-chat", label: "IA Chat" */}
   const navItems = [
     { href: "#home", label: "Início" },
     { href: "#about", label: "Sobre" },
     { href: "#projects", label: "Projetos" },
-    { href: "#ai-chat", label: "IA Chat" },
     { href: "#contact", label: "Contato" },
   ] as const;
 
