@@ -31,7 +31,7 @@ const Hero = () => {
           <div className="mb-8">
             <div className="w-32 h-32 mx-auto rounded-full bg-gradient-primary shadow-glow flex items-center justify-center overflow-hidden">
               <img 
-                src="/src/assets/andrew.jpg" 
+                src="/andrew.jpg" 
                 alt="Foto" 
                 className="w-full h-full object-cover"
               />
