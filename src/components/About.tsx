@@ -4,9 +4,9 @@ import { Code, Rocket, Users, Zap } from "lucide-react";
 
 const About = () => {
   const skills = [
-    "React", "TypeScript", "Node.js", "Next.js", "Vue.js",
-    "Python", "Express", "MongoDB", "PostgreSQL", "AWS",
-    "Docker", "Git", "Figma", "Tailwind CSS", "GraphQL"
+    "Python", "MySQL", "MongoDB", "PostgreSQL", "AWS",
+    "Docker", "Git", "Google Cloud", "LangChain", "OpenAI",
+    "Flutter", "Dart"
   ];
 
   const highlights = [
@@ -40,7 +40,7 @@ const About = () => {
             Sobre <span className="bg-gradient-primary bg-clip-text text-transparent">Mim</span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Desenvolvedor apaixonado por criar soluções inovadoras e experiências digitais memoráveis
+            Desenvolvedor apaixonado por criar soluções inovadoras
           </p>
         </div>
 
@@ -48,26 +48,25 @@ const About = () => {
           {/* Profile content */}
           <div className="space-y-6 animate-fade-in-up">
             <p className="text-lg text-muted-foreground leading-relaxed">
-              Sou um desenvolvedor full stack com mais de 5 anos de experiência criando 
-              aplicações web modernas e escaláveis. Minha paixão está em transformar ideias 
-              complexas em soluções elegantes e funcionais.
+              Profissional com 4 anos de experiência na área de logística, sendo 3 deles dedicados à análise de dados, automações e melhoria contínua. Estudante de Ciência de Dados, com forte domínio em SQL e Python, além de experiência com BigQuery, Spark e ferramentas de visualização como Power BI, Looker Studio, Redash e Tableau. Atua com foco em processos enxutos, sendo certificado Green Belt em Lean.
+
             </p>
             <p className="text-lg text-muted-foreground leading-relaxed">
-              Especializo-me em tecnologias como React, Node.js e TypeScript, sempre 
-              buscando entregar código de alta qualidade e experiências excepcionais 
-              para os usuários finais.
+              Possui perfil analítico, pensamento crítico e sólida vivência em ambientes logísticos e administrativos. Destaque na aplicação de metodologias como PDCA, 5 Porquês, Ishikawa e Gemba, bem como no uso de ferramentas de automação como Power Automate e Google Apps Script.
             </p>
             <p className="text-lg text-muted-foreground leading-relaxed">
-              Quando não estou codificando, gosto de estudar novas tecnologias, 
-              contribuir para projetos open source e compartilhar conhecimento 
-              com a comunidade de desenvolvedores.
+              Experiência em desenvolvimento de agents de IA personalizados utilizando RAG e outras tecnologias, desenvolvimento de aplicação de reconhecimento facial com Flutter e programação em Delphi.
             </p>
           </div>
 
           {/* Profile image placeholder */}
           <div className="relative">
             <div className="w-full max-w-md mx-auto aspect-square bg-gradient-primary rounded-2xl shadow-glow flex items-center justify-center">
-              <span className="text-6xl font-bold text-primary-foreground">DEV</span>
+              <img 
+                src="/src/assets/andrew.jpg" 
+                alt="Foto" 
+                className="w-full h-full object-cover"
+              />
             </div>
             <div className="absolute -top-4 -right-4 w-24 h-24 bg-accent/20 rounded-full blur-2xl animate-float"></div>
             <div className="absolute -bottom-4 -left-4 w-32 h-32 bg-primary/20 rounded-full blur-2xl animate-float" style={{ animationDelay: "2s" }}></div>

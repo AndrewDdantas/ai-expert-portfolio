@@ -8,6 +8,10 @@ const Hero = () => {
       section.scrollIntoView({ behavior: "smooth" });
     }
   };
+  const email = "andrewdantas634@gmail.com";
+  const subject = encodeURIComponent("Contato via portfólio");
+  const body = encodeURIComponent("Olá, gostaria de entrar em contato com você.");
+  const mailto = `mailto:${email}?subject=${subject}&body=${body}`;
 
   return (
     <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden">
@@ -25,8 +29,12 @@ const Hero = () => {
         <div className="max-w-4xl mx-auto animate-fade-in-up">
           {/* Profile image placeholder */}
           <div className="mb-8">
-            <div className="w-32 h-32 mx-auto rounded-full bg-gradient-primary shadow-glow flex items-center justify-center">
-              <span className="text-4xl font-bold text-primary-foreground">P</span>
+            <div className="w-32 h-32 mx-auto rounded-full bg-gradient-primary shadow-glow flex items-center justify-center overflow-hidden">
+              <img 
+                src="/src/assets/andrew.jpg" 
+                alt="Foto" 
+                className="w-full h-full object-cover"
+              />
             </div>
           </div>
 
@@ -35,14 +43,11 @@ const Hero = () => {
             <span className="bg-gradient-primary bg-clip-text text-transparent">
               Desenvolvedor
             </span>
-            <br />
-            <span className="text-foreground">Full Stack</span>
           </h1>
 
           {/* Subtitle */}
           <p className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-2xl mx-auto leading-relaxed">
-            Criando experiências digitais incríveis com código limpo e design moderno. 
-            Especializado em React, Node.js e tecnologias web avançadas.
+            Criador de soluções inovadoras com IA para transformar ideias em realidade.
           </p>
 
           {/* CTA Buttons */}
@@ -66,18 +71,18 @@ const Hero = () => {
 
           {/* Social Links */}
           <div className="flex justify-center space-x-6 mb-12">
-            <Button variant="ghost" size="lg" className="hover:text-primary transition-smooth">
+            <a href="https://github.com/AndrewDdantas" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-smooth">
               <Github className="h-6 w-6" />
-              <span className="sr-only">GitHub</span>
-            </Button>
-            <Button variant="ghost" size="lg" className="hover:text-primary transition-smooth">
+            </a>
+            <span className="sr-only">GitHub</span>
+            <a href="https://www.linkedin.com/in/andrew-dantas-22a79a236/" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-smooth">
               <Linkedin className="h-6 w-6" />
-              <span className="sr-only">LinkedIn</span>
-            </Button>
-            <Button variant="ghost" size="lg" className="hover:text-primary transition-smooth">
+            </a>
+            <span className="sr-only">LinkedIn</span>
+            <a href={mailto} className="hover:text-primary transition-colors duration-300" aria-label={`Enviar email para ${email}`}>
               <Mail className="h-6 w-6" />
-              <span className="sr-only">Email</span>
-            </Button>
+            <span className="sr-only">Email</span>
+            </a>
           </div>
 
           {/* Scroll indicator */}
