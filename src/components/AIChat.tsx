@@ -5,6 +5,7 @@ import { Input } from "@/components/ui/input";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Send, Bot, User, Loader2 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { apiCall } from "@/lib/api";
 
 interface Message {
   id: string;
@@ -41,36 +42,36 @@ const AIChat = () => {
     setIsLoading(true);
 
     try {
-      // Simular chamada para API de IA
-      // Aqui você integrará com sua API real
-      const response = await fetch("/api/ai-chat", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+      // Usando a configuração segura da API
+      const data = await apiCall('/ai-chat', {
+        method: 'POST',
         body: JSON.stringify({
           message: userMessage.text,
         }),
       });
 
-      if (response.ok) {
-        const data = await response.json();
-        const aiMessage: Message = {
-          id: (Date.now() + 1).toString(),
-          text: data.response,
-          isUser: false,
-          timestamp: new Date(),
-        };
-        setMessages((prev) => [...prev, aiMessage]);
-      } else {
-        throw new Error("Erro na resposta da API");
-      }
+      const aiMessage: Message = {
+        id: (Date.now() + 1).toString(),
+        text: data.output,
+        isUser: false,
+        timestamp: new Date(),
+      };
+      setMessages((prev) => [...prev, aiMessage]);
     } catch (error) {
-      // Resposta simulada para demonstração
+      console.error('Erro ao comunicar com a API:', error);
+      
+      // Exibir toast de erro
+      toast({
+        title: "Erro de Comunicação",
+        description: "Não foi possível conectar com o assistente de IA. Tente novamente em alguns instantes.",
+        variant: "destructive",
+      });
+
+      // Resposta simulada para demonstração em caso de erro
       setTimeout(() => {
         const aiMessage: Message = {
           id: (Date.now() + 1).toString(),
-          text: "Obrigado por sua pergunta! Esta é uma resposta simulada da IA. Em breve, estarei conectado à API real para fornecer informações detalhadas sobre o profissional. Por favor, tente novamente em alguns instantes.",
+          text: "Desculpe, estou com dificuldades de conexão no momento. Esta é uma resposta simulada. Por favor, tente novamente em alguns instantes.",
           isUser: false,
           timestamp: new Date(),
         };
