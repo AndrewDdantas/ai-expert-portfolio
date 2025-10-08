@@ -35,7 +35,7 @@ export const useAccessCounter = () => {
   // Verifica se é uma nova visita do mesmo visitante
   const isNewVisit = (lastVisit: string): boolean => {
     if (!lastVisit) {
-      console.log('📊 Primeira visita (sem lastVisit)');
+      console.log("📊 Primeira visita (sem lastVisit)");
       return true;
     }
 
@@ -46,14 +46,14 @@ export const useAccessCounter = () => {
     const timeThreshold = import.meta.env.DEV ? 10 * 1000 : 30 * 60 * 1000; // 10s em dev, 30min em prod
     const timeDiff = now.getTime() - lastVisitDate.getTime();
     const isNew = timeDiff > timeThreshold;
-    
-    console.log('📊 Verificação de nova visita:', {
+
+    console.log("📊 Verificação de nova visita:", {
       lastVisit,
       now: now.toISOString(),
       timeDiffMinutes: Math.round(timeDiff / (60 * 1000)),
-      isNew
+      isNew,
     });
-    
+
     return isNew;
   };
 
@@ -102,9 +102,9 @@ export const useAccessCounter = () => {
 
       if (savedCounter) {
         currentCounter = JSON.parse(savedCounter);
-        console.log('📊 Dados carregados do localStorage:', currentCounter);
+        console.log("📊 Dados carregados do localStorage:", currentCounter);
       } else {
-        console.log('📊 Primeira visita - sem dados salvos');
+        console.log("📊 Primeira visita - sem dados salvos");
       }
 
       // Verifica se deve incrementar o contador
@@ -112,11 +112,11 @@ export const useAccessCounter = () => {
       const shouldIncrement = isNewVisit(currentCounter.lastVisit);
       const isTodayVisit = isSameDay(currentCounter.lastVisit, now);
 
-      console.log('📊 Verificações:', {
+      console.log("📊 Verificações:", {
         shouldIncrement,
         isTodayVisit,
         lastVisit: currentCounter.lastVisit,
-        now
+        now,
       });
 
       if (shouldIncrement || !savedCounter) {
@@ -128,24 +128,23 @@ export const useAccessCounter = () => {
           todayVisits: isTodayVisit ? currentCounter.todayVisits + 1 : 1,
         };
 
-        console.log('📊 Incrementando contador:', newCounter);
+        console.log("📊 Incrementando contador:", newCounter);
 
         // Salva no localStorage
         localStorage.setItem(STORAGE_KEY, JSON.stringify(newCounter));
         setCounter(newCounter);
       } else {
-        console.log('📊 Mantendo contador atual (sem incrementar)');
+        console.log("📊 Mantendo contador atual (sem incrementar)");
         // Apenas carrega os dados existentes
         setCounter(currentCounter);
       }
 
       // Gera/recupera ID do visitante
       getOrCreateVisitorId();
-      
+
       setTimeout(() => {
         setIsLoading(false);
       }, 1000);
-      
     } catch (error) {
       console.error("Erro ao carregar contador de acessos:", error);
       setIsLoading(false);
