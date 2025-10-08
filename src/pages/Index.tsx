@@ -1,6 +1,7 @@
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import About from "@/components/About";
+import StatsSection from "@/components/StatsSection";
 import Projects from "@/components/Projects";
 import AIChat from "@/components/AIChat";
 import Footer from "@/components/Footer";
@@ -20,6 +21,11 @@ const Index = () => {
         {/* Se o About já tiver id="about" internamente, remova esta <section> wrapper */}
         <section id="about" className="scroll-mt-24">
           <About />
+        </section>
+
+        {/* Seção de estatísticas */}
+        <section id="stats" className="scroll-mt-24">
+          <StatsSection />
         </section>
 
         {/* Se o Projects já tiver id="projects", remova o wrapper */}

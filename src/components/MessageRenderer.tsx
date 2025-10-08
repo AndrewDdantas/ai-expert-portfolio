@@ -10,20 +10,31 @@ const MessageRenderer = ({ content, className = "" }: MessageRendererProps) => {
   const processContent = (text: string) => {
     // Converte bullets simples em markdown e melhora formatação geral
     let processed = text
-      // Melhora formatação de títulos/seções com **
+      // Melhora formatação de seções importantes com **
       .replace(/\*\s*\*\*(.*?)\*\*:/g, '\n**$1:**\n')
-      // Converte bullets para markdown
-      .replace(/^\s*\*\s+\*\*(.*?)\*\*:/gm, '• **$1:**')
+      // Converte bullets para markdown preservando o texto em negrito
+      .replace(/^\s*\*\s+\*\*(.*?)\*\*:\s*/gm, '• **$1:** ')
       .replace(/^\s*\*\s+/gm, '• ')
-      // Melhora formatação após dois pontos
-      .replace(/:\s*\n?\*\s*/g, ':\n\n• ')
-      // Remove múltiplas quebras de linha
-      .replace(/\n\s*\n\s*\n/g, '\n\n')
-      // Adiciona espaçamento para parágrafos
+      // Melhora formatação de listas após dois pontos
+      .replace(/:\s*\*\s+/g, ':\n\n• ')
+      // Adiciona quebras de linha antes de parágrafos importantes
+      .replace(/(\.\s+)([A-Z][^.]*:)/g, '$1\n\n$2')
+      // Remove múltiplas quebras de linha desnecessárias
+      .replace(/\n{3,}/g, '\n\n')
+      // Processa linha por linha para melhor formatação
       .split('\n')
       .map(line => line.trim())
       .filter(line => line.length > 0)
-      .join('\n\n');
+      .map(line => {
+        // Se a linha termina com dois pontos, adiciona espaçamento
+        if (line.endsWith(':') && !line.startsWith('•')) {
+          return line + '\n';
+        }
+        return line;
+      })
+      .join('\n\n')
+      // Remove espaçamentos excessivos criados acima
+      .replace(/\n{3,}/g, '\n\n');
 
     return processed;
   };

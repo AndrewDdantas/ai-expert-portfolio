@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Github, Linkedin, Mail, Heart } from "lucide-react";
+import AccessCounterDisplay from "./AccessCounterDisplay";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -76,8 +77,9 @@ const Footer = () => {
         {/* Bottom section */}
         <div className="pt-8 border-t border-border/50">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-            <div className="flex items-center space-x-2 text-muted-foreground">
+            <div className="flex items-center space-x-4 text-muted-foreground">
               <span>© {currentYear} Andrew Dantas. </span>
+              <AccessCounterDisplay variant="compact" />
             </div>
             <div className="text-sm text-muted-foreground">
               Último update: {new Date().toLocaleDateString('pt-BR')}

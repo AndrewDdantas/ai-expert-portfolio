@@ -138,7 +138,7 @@ const AIChat = () => {
                       </div>
                     )}
                     <div
-                      className={`max-w-xs lg:max-w-md px-4 py-2 rounded-xl transition-all duration-300 ${
+                      className={`max-w-sm lg:max-w-lg xl:max-w-xl px-4 py-3 rounded-xl transition-all duration-300 ${
                         message.isUser
                           ? "bg-gradient-primary text-primary-foreground shadow-soft"
                           : "glass border border-border/50"
@@ -152,7 +152,7 @@ const AIChat = () => {
                           className={`text-sm ${message.isUser ? 'text-primary-foreground' : ''}`}
                         />
                       )}
-                      <p className="text-xs opacity-70 mt-1">
+                      <p className="text-xs opacity-70 mt-2">
                         {message.timestamp.toLocaleTimeString([], {
                           hour: "2-digit",
                           minute: "2-digit",
