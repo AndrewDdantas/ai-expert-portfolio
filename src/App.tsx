@@ -8,13 +8,6 @@ import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
 
-// Debug das variáveis de ambiente
-console.log('=== DEBUG VARIÁVEIS DE AMBIENTE ===');
-console.log('VITE_API_TOKEN:', import.meta.env.VITE_API_TOKEN ? '✓ Definido' : '✗ Não encontrado');
-console.log('VITE_API_URL:', import.meta.env.VITE_API_URL || 'Não encontrado');
-console.log('MODE:', import.meta.env.MODE);
-console.log('DEV:', import.meta.env.DEV);
-
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>

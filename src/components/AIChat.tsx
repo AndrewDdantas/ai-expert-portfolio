@@ -6,6 +6,7 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import { Send, Bot, User, Loader2 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { apiCall } from "@/lib/api";
+import MessageRenderer from "./MessageRenderer";
 
 interface Message {
   id: string;
@@ -143,7 +144,14 @@ const AIChat = () => {
                           : "glass border border-border/50"
                       }`}
                     >
-                      <p className="text-sm leading-relaxed">{message.text}</p>
+                      {message.isUser ? (
+                        <p className="text-sm leading-relaxed">{message.text}</p>
+                      ) : (
+                        <MessageRenderer 
+                          content={message.text} 
+                          className={`text-sm ${message.isUser ? 'text-primary-foreground' : ''}`}
+                        />
+                      )}
                       <p className="text-xs opacity-70 mt-1">
                         {message.timestamp.toLocaleTimeString([], {
                           hour: "2-digit",
