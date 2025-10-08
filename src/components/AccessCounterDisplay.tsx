@@ -12,7 +12,7 @@ interface AccessCounterDisplayProps {
 }
 
 const AccessCounterDisplay = ({ variant = 'compact', className = '', showDebug = false }: AccessCounterDisplayProps) => {
-  const { counter, isLoading, resetCounter } = useAccessCounter();
+  const { counter, isLoading, resetCounter, forceIncrement } = useAccessCounter();
 
   if (isLoading) {
     return (
@@ -94,24 +94,47 @@ const AccessCounterDisplay = ({ variant = 'compact', className = '', showDebug =
           </div>
         </div>
 
-        <div className="pt-2 border-t border-border/50">
-          <div className="flex items-center justify-between">
-            <p className="text-xs text-muted-foreground">
+          <div className="pt-4 border-t border-border/50">
+            <div className="text-xs text-muted-foreground mb-2">
               Contador atualizado em tempo real
-            </p>
+              {import.meta.env.DEV && " (DEV: nova visita após 10s)"}
+            </div>
             {showDebug && import.meta.env.DEV && (
-              <Button
-                variant="ghost"
-                size="sm"
-                onClick={resetCounter}
-                className="text-xs h-6 px-2"
-              >
-                <RotateCcw className="h-3 w-3 mr-1" />
-                Reset
-              </Button>
+              <div className="flex flex-wrap gap-2">
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  onClick={() => {
+                    const saved = localStorage.getItem('portfolio_access_counter');
+                    const visitorId = localStorage.getItem('portfolio_visitor_id');
+                    console.log('📊 Debug localStorage:', { saved: JSON.parse(saved || '{}'), visitorId });
+                    alert(`Counter: ${saved}\nVisitor ID: ${visitorId}`);
+                  }}
+                  className="text-xs h-6 px-2"
+                >
+                  Debug
+                </Button>
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  onClick={forceIncrement}
+                  className="text-xs h-6 px-2"
+                >
+                  <TrendingUp className="h-3 w-3 mr-1" />
+                  +1
+                </Button>
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  onClick={resetCounter}
+                  className="text-xs h-6 px-2"
+                >
+                  <RotateCcw className="h-3 w-3 mr-1" />
+                  Reset
+                </Button>
+              </div>
             )}
           </div>
-        </div>
       </div>
     </Card>
   );

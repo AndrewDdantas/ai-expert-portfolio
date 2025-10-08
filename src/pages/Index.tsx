@@ -23,10 +23,10 @@ const Index = () => {
           <About />
         </section>
 
-        {/* Seção de estatísticas */}
+        {/* Seção de estatísticas 
         <section id="stats" className="scroll-mt-24">
           <StatsSection />
-        </section>
+        </section>*/}
 
         {/* Se o Projects já tiver id="projects", remova o wrapper */}
         <section id="projects" className="scroll-mt-24">
