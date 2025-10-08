@@ -21,12 +21,12 @@ Este sistema de contador de acessos foi implementado para monitorar as visitas a
 
 ### 🔢 Métricas Disponíveis
 
-| Métrica | Descrição |
-|---------|-----------|
-| **Total de Visitas** | Número total de sessões registradas |
+| Métrica               | Descrição                                |
+| --------------------- | ---------------------------------------- |
+| **Total de Visitas**  | Número total de sessões registradas      |
 | **Visitantes Únicos** | Contagem de visitas com intervalo >30min |
-| **Visitas Hoje** | Número de acessos no dia atual |
-| **Última Visita** | Data da última sessão registrada |
+| **Visitas Hoje**      | Número de acessos no dia atual           |
+| **Última Visita**     | Data da última sessão registrada         |
 
 ### 🛡️ Privacidade
 
@@ -38,13 +38,15 @@ Este sistema de contador de acessos foi implementado para monitorar as visitas a
 ### 🔧 Funcionalidades Técnicas
 
 #### Hook `useAccessCounter`
+
 ```typescript
 const { counter, isLoading, resetCounter } = useAccessCounter();
 ```
 
 #### Componente de Exibição
+
 ```typescript
-<AccessCounterDisplay 
+<AccessCounterDisplay
   variant="compact" | "full"
   showDebug={true} // Apenas em desenvolvimento
 />
@@ -61,13 +63,15 @@ const { counter, isLoading, resetCounter } = useAccessCounter();
 ### 🚀 Desenvolvimento
 
 #### Reset do Contador (DEV)
+
 Em modo de desenvolvimento, um botão "Reset" está disponível na seção de estatísticas para facilitar testes.
 
 #### Debug
+
 ```javascript
 // Verificar dados salvos
-localStorage.getItem('portfolio_access_counter')
-localStorage.getItem('portfolio_visitor_id')
+localStorage.getItem("portfolio_access_counter");
+localStorage.getItem("portfolio_visitor_id");
 ```
 
 ### 📈 Evolução Futura
