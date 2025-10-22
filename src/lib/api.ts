@@ -6,8 +6,9 @@ const API_CONFIG = {
   // URL do backend
   // Produção (Netlify): usa o mesmo domínio (/.netlify/functions/)
   // Desenvolvimento: usa servidor local (http://localhost:3001)
-  baseURL: import.meta.env.VITE_BACKEND_URL || 
-           (import.meta.env.PROD ? "" : "http://localhost:3001"),
+  baseURL:
+    import.meta.env.VITE_BACKEND_URL ||
+    (import.meta.env.PROD ? "" : "http://localhost:3001"),
 
   // Headers padrão para todas as requisições
   getHeaders: () => {

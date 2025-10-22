@@ -59,16 +59,16 @@ Antes de fazer deploy, configure as variáveis:
 
 #### Variáveis Obrigatórias:
 
-| Nome | Valor | Descrição |
-|------|-------|-----------|
-| `API_URL` | `https://sua-api-externa.com` | URL da API externa |
-| `API_TOKEN` | `Bearer seu-token-aqui` | Token de autenticação |
+| Nome        | Valor                         | Descrição             |
+| ----------- | ----------------------------- | --------------------- |
+| `API_URL`   | `https://sua-api-externa.com` | URL da API externa    |
+| `API_TOKEN` | `Bearer seu-token-aqui`       | Token de autenticação |
 
 #### Variáveis Opcionais:
 
-| Nome | Valor | Descrição |
-|------|-------|-----------|
-| `NODE_VERSION` | `18` | Versão do Node.js |
+| Nome           | Valor | Descrição         |
+| -------------- | ----- | ----------------- |
+| `NODE_VERSION` | `18`  | Versão do Node.js |
 
 ⚠️ **IMPORTANTE**: Não adicione `VITE_BACKEND_URL` pois o frontend usará as Serverless Functions automaticamente!
 
@@ -81,6 +81,7 @@ Antes de fazer deploy, configure as variáveis:
 ### Passo 5: Testar
 
 Acesse:
+
 - **Site**: `https://seu-site.netlify.app`
 - **Health Check**: `https://seu-site.netlify.app/api/health`
 - **AI Chat**: Teste na interface do site
@@ -155,6 +156,7 @@ O Netlify já configura deploy automático quando você conecta via GitHub!
 ### DNS do Netlify
 
 Aponte seu domínio para os nameservers do Netlify:
+
 ```
 dns1.p0x.netlify.com
 dns2.p0x.netlify.com
@@ -203,8 +205,9 @@ netlify dev
 ```
 
 Isso vai:
+
 - ✅ Rodar o frontend em http://localhost:8888
-- ✅ Rodar as functions em /.netlify/functions/*
+- ✅ Rodar as functions em /.netlify/functions/\*
 - ✅ Simular ambiente de produção
 - ✅ Usar variáveis de ambiente locais
 
@@ -323,13 +326,13 @@ headers: {
 
 ## 📈 Limites do Plano Gratuito
 
-| Recurso | Limite Gratuito |
-|---------|-----------------|
-| Bandwidth | 100 GB/mês |
-| Build minutes | 300 min/mês |
-| Function invocations | 125K/mês |
-| Function runtime | 100 horas/mês |
-| Sites | Ilimitado |
+| Recurso              | Limite Gratuito |
+| -------------------- | --------------- |
+| Bandwidth            | 100 GB/mês      |
+| Build minutes        | 300 min/mês     |
+| Function invocations | 125K/mês        |
+| Function runtime     | 100 horas/mês   |
+| Sites                | Ilimitado       |
 
 Perfeito para portfolios! 🎉
 
