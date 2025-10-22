@@ -9,12 +9,14 @@ O projeto **AI Expert Portfolio** está completamente configurado para deploy no
 ## 📁 Arquivos Criados para Netlify
 
 ### Configuração Principal
+
 ```
 ✅ netlify.toml                    - Configuração do Netlify
 ✅ .env.netlify.example            - Template de variáveis
 ```
 
 ### Serverless Functions
+
 ```
 ✅ netlify/functions/health.js         - GET /api/health
 ✅ netlify/functions/ai-chat.js        - POST /api/ai-chat
@@ -23,12 +25,14 @@ O projeto **AI Expert Portfolio** está completamente configurado para deploy no
 ```
 
 ### Documentação
+
 ```
 ✅ NETLIFY_DEPLOY.md          - Guia completo de deploy
 ✅ NETLIFY_QUICKSTART.md      - Guia rápido (5 min)
 ```
 
 ### Atualizações
+
 ```
 ✅ src/lib/api.ts             - Suporte a Netlify Functions
 ✅ package.json               - Scripts para Netlify
@@ -98,6 +102,7 @@ netlify deploy --prod
 ```
 
 📖 **Guias detalhados**:
+
 - [NETLIFY_QUICKSTART.md](./NETLIFY_QUICKSTART.md) - 5 minutos
 - [NETLIFY_DEPLOY.md](./NETLIFY_DEPLOY.md) - Completo
 
@@ -108,15 +113,18 @@ netlify deploy --prod
 ### ✅ O que está protegido:
 
 1. **Credenciais da API**
+
    - Token nunca exposto no código frontend
    - Armazenado apenas em variáveis de ambiente do Netlify
    - Acessível apenas pelas Serverless Functions
 
 2. **URL da API Externa**
+
    - Mantida privada no servidor
    - Frontend só conhece endpoints locais (`/api/*`)
 
 3. **CORS**
+
    - Configurado em todas as functions
    - Headers de segurança no `netlify.toml`
 
@@ -145,8 +153,9 @@ netlify dev
 ```
 
 Acesse:
+
 - Frontend: http://localhost:8888
-- Functions: http://localhost:8888/api/*
+- Functions: http://localhost:8888/api/\*
 
 ---
 
@@ -155,11 +164,13 @@ Acesse:
 Após deploy, suas functions estarão em:
 
 ### Health Check
+
 ```
 GET https://seu-site.netlify.app/api/health
 ```
 
 **Resposta:**
+
 ```json
 {
   "status": "ok",
@@ -169,6 +180,7 @@ GET https://seu-site.netlify.app/api/health
 ```
 
 ### AI Chat
+
 ```
 POST https://seu-site.netlify.app/api/ai-chat
 Content-Type: application/json
@@ -179,6 +191,7 @@ Content-Type: application/json
 ```
 
 **Resposta:**
+
 ```json
 {
   "output": "Resposta da IA..."
@@ -186,11 +199,13 @@ Content-Type: application/json
 ```
 
 ### Access Counter
+
 ```
 GET https://seu-site.netlify.app/api/access-counter
 ```
 
 **Resposta:**
+
 ```json
 {
   "totalVisits": 123,
@@ -205,16 +220,16 @@ GET https://seu-site.netlify.app/api/access-counter
 
 ### Incluído no Plano Gratuito:
 
-| Recurso | Limite |
-|---------|--------|
-| 💰 Custo | **GRÁTIS** |
-| 🌐 Bandwidth | 100 GB/mês |
-| 🔧 Functions | 125,000 invocações/mês |
-| ⏱️ Function Runtime | 100 horas/mês |
-| 🏗️ Build Minutes | 300 min/mês |
-| 🌍 CDN | Global, ilimitado |
-| 🔒 SSL/HTTPS | Automático e grátis |
-| 📱 Sites | Ilimitado |
+| Recurso             | Limite                 |
+| ------------------- | ---------------------- |
+| 💰 Custo            | **GRÁTIS**             |
+| 🌐 Bandwidth        | 100 GB/mês             |
+| 🔧 Functions        | 125,000 invocações/mês |
+| ⏱️ Function Runtime | 100 horas/mês          |
+| 🏗️ Build Minutes    | 300 min/mês            |
+| 🌍 CDN              | Global, ilimitado      |
+| 🔒 SSL/HTTPS        | Automático e grátis    |
+| 📱 Sites            | Ilimitado              |
 
 **Perfeito para portfolios!** 🎉
 
@@ -222,15 +237,15 @@ GET https://seu-site.netlify.app/api/access-counter
 
 ## 🎯 Vantagens vs Express Server
 
-| Aspecto | Express (servidor tradicional) | Netlify Functions |
-|---------|-------------------------------|-------------------|
-| **Custo** | ~$5-10/mês (Heroku, Railway) | **Grátis** |
-| **Escalabilidade** | Manual | **Automática** |
-| **Manutenção** | Alta (servidor sempre rodando) | **Zero** |
-| **Deploy** | Manual ou CI/CD | **Automático** |
-| **Cold Start** | Não (servidor sempre ativo) | Sim (~1s primeira vez) |
-| **SSL** | Configurar manualmente | **Automático** |
-| **CDN** | Configurar separado | **Incluído** |
+| Aspecto            | Express (servidor tradicional) | Netlify Functions      |
+| ------------------ | ------------------------------ | ---------------------- |
+| **Custo**          | ~$5-10/mês (Heroku, Railway)   | **Grátis**             |
+| **Escalabilidade** | Manual                         | **Automática**         |
+| **Manutenção**     | Alta (servidor sempre rodando) | **Zero**               |
+| **Deploy**         | Manual ou CI/CD                | **Automático**         |
+| **Cold Start**     | Não (servidor sempre ativo)    | Sim (~1s primeira vez) |
+| **SSL**            | Configurar manualmente         | **Automático**         |
+| **CDN**            | Configurar separado            | **Incluído**           |
 
 Para portfolios, Netlify Functions é ideal! ⚡
 
@@ -239,6 +254,7 @@ Para portfolios, Netlify Functions é ideal! ⚡
 ## 📝 Checklist Final
 
 ### Antes do Deploy
+
 - [x] ✅ `netlify.toml` criado
 - [x] ✅ Functions criadas em `netlify/functions/`
 - [x] ✅ Frontend atualizado para suportar Netlify
@@ -246,6 +262,7 @@ Para portfolios, Netlify Functions é ideal! ⚡
 - [x] ✅ .gitignore protegendo .env
 
 ### Durante o Deploy
+
 - [ ] Repositório conectado no Netlify
 - [ ] Build settings configurados
 - [ ] Variáveis de ambiente adicionadas:
@@ -254,6 +271,7 @@ Para portfolios, Netlify Functions é ideal! ⚡
 - [ ] Deploy executado com sucesso
 
 ### Após o Deploy
+
 - [ ] Site carregou corretamente
 - [ ] `/api/health` respondendo
 - [ ] Chat com IA funcionando
@@ -265,6 +283,7 @@ Para portfolios, Netlify Functions é ideal! ⚡
 ## 🔄 Fluxo de Trabalho
 
 ### Desenvolvimento
+
 ```bash
 # Testar localmente
 netlify dev
@@ -276,6 +295,7 @@ git push origin main
 ```
 
 ### Deploy Automático
+
 ```
 1. Push para GitHub
    ↓
@@ -289,6 +309,7 @@ git push origin main
 ```
 
 ### Deploy Preview (Pull Requests)
+
 ```
 1. Criar PR no GitHub
    ↓
@@ -306,6 +327,7 @@ git push origin main
 ## 🆘 Troubleshooting
 
 ### Build Falhou
+
 ```bash
 # Ver logs no Dashboard Netlify
 # Ou testar localmente:
@@ -313,6 +335,7 @@ npm run build
 ```
 
 ### Functions Não Funcionam
+
 ```bash
 # Verificar variáveis de ambiente
 # Netlify Dashboard → Site settings → Environment variables
@@ -322,6 +345,7 @@ netlify dev
 ```
 
 ### CORS Error
+
 Functions já têm CORS configurado. Limpe cache do browser.
 
 ---
