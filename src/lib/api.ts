@@ -1,8 +1,13 @@
 // API configuration utilities
-// Agora o frontend se conecta ao nosso backend local, que faz proxy seguro para a API externa
+// Agora o frontend se conecta ao nosso backend, que faz proxy seguro para a API externa
+// Em produção (Netlify), usa Serverless Functions
+// Em desenvolvimento, usa servidor Express local
 const API_CONFIG = {
-  // URL do nosso backend local (não expõe credenciais!)
-  baseURL: import.meta.env.VITE_BACKEND_URL || "http://localhost:3001",
+  // URL do backend
+  // Produção (Netlify): usa o mesmo domínio (/.netlify/functions/)
+  // Desenvolvimento: usa servidor local (http://localhost:3001)
+  baseURL: import.meta.env.VITE_BACKEND_URL || 
+           (import.meta.env.PROD ? "" : "http://localhost:3001"),
 
   // Headers padrão para todas as requisições
   getHeaders: () => {
@@ -10,25 +15,25 @@ const API_CONFIG = {
       "Content-Type": "application/json",
     };
 
-    // Não precisamos mais enviar token do frontend!
-    // O backend cuida disso de forma segura
+    // Não precisamos enviar token do frontend!
+    // O backend/serverless cuida disso de forma segura
 
     return headers;
   },
 
   // Validação se a configuração está completa
   isConfigured: () => {
-    const hasBaseURL = Boolean(API_CONFIG.baseURL);
+    const hasBaseURL = Boolean(API_CONFIG.baseURL !== undefined);
 
     if (!hasBaseURL) {
       console.error("Configuração da API incompleta:");
       console.log(
         "- VITE_BACKEND_URL:",
-        hasBaseURL ? "✓ Definido" : "✗ Usando padrão (http://localhost:3001)"
+        hasBaseURL ? "✓ Definido" : "✗ Usando padrão"
       );
     }
 
-    return hasBaseURL;
+    return true; // Sempre true pois temos fallback
   },
 };
 
