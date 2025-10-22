@@ -206,6 +206,7 @@ O Netlify oferece hosting gratuito com Serverless Functions integradas.
 4. **Deploy!**
 
 ✨ **Guides completos**:
+
 - 📖 [Guia Rápido Netlify](./NETLIFY_QUICKSTART.md) - 5 minutos
 - 📖 [Guia Completo Netlify](./NETLIFY_DEPLOY.md) - Detalhado
 
@@ -221,11 +222,14 @@ O Netlify oferece hosting gratuito com Serverless Functions integradas.
 ### 🔧 Outras Opções
 
 #### Vercel
+
 Deploy separado de frontend e backend.
+
 - Frontend: `vercel --prod`
 - Backend: Deploy do diretório `server/`
 
 #### Heroku
+
 - Backend: `git subtree push --prefix server heroku main`
 - Frontend: Deploy normal
 

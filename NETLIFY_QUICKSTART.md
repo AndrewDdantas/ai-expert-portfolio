@@ -45,6 +45,7 @@
 ```
 
 Preencha:
+
 - **Branch**: `main`
 - **Build command**: `npm run build`
 - **Publish directory**: `dist`
@@ -102,12 +103,15 @@ Clique em **"Deploy site"** e aguarde (2-5 min)
 ### Testar Endpoints
 
 1. **Health Check**
+
    ```
    https://seu-site.netlify.app/api/health
    ```
+
    Deve retornar: `{"status":"ok",...}`
 
 2. **AI Chat** (use Postman ou curl)
+
    ```bash
    curl -X POST https://seu-site.netlify.app/api/ai-chat \
      -H "Content-Type: application/json" \
