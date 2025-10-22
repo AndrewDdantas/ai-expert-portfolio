@@ -43,8 +43,8 @@ const AIChat = () => {
     setIsLoading(true);
 
     try {
-      // Usando a configuração segura da API
-      const data = await apiCall('/ai-chat', {
+      // Chamando nosso backend local que faz proxy seguro para a API externa
+      const data = await apiCall('/api/ai-chat', {
         method: 'POST',
         body: JSON.stringify({
           message: userMessage.text,

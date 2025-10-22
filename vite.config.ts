@@ -22,9 +22,8 @@ export default defineConfig(({ mode }) => {
       },
     },
     define: {
-      // Make environment variables available to the client
-      "import.meta.env.VITE_API_TOKEN": JSON.stringify(env.VITE_API_TOKEN),
-      "import.meta.env.VITE_API_URL": JSON.stringify(env.VITE_API_URL),
+      // Apenas a URL do backend local (não expõe credenciais!)
+      "import.meta.env.VITE_BACKEND_URL": JSON.stringify(env.VITE_BACKEND_URL || "http://localhost:3001"),
     },
   };
 });
