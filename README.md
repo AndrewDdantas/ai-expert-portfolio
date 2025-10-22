@@ -173,38 +173,63 @@ curl -X POST http://localhost:3001/api/ai-chat \
 ## 📝 Scripts Disponíveis
 
 ```bash
-# Frontend
-npm run dev              # Rodar apenas frontend
+# Desenvolvimento
+npm run dev              # Frontend apenas (Vite)
+npm run dev:backend      # Backend apenas (Express)
+npm run dev:all          # Frontend + Backend juntos
+npm run dev:netlify      # Simular ambiente Netlify localmente
+
+# Build
 npm run build            # Build para produção
-npm run preview          # Preview do build
+npm run preview          # Preview do build local
 
-# Backend
-npm run dev:backend      # Rodar apenas backend
-
-# Ambos
-npm run dev:all          # Rodar frontend + backend juntos
+# Deploy (Netlify CLI)
+npm run netlify:deploy       # Deploy preview
+npm run netlify:deploy:prod  # Deploy produção
 ```
 
 ## 🚀 Deploy
 
-### Backend
+### 🌐 Netlify (Recomendado) - Tudo em um lugar!
 
-1. Configure variáveis de ambiente no provider
-2. Deploy do diretório `server/`
-3. Anote a URL do backend
+O Netlify oferece hosting gratuito com Serverless Functions integradas.
 
-### Frontend
+#### Deploy Rápido (5 minutos)
 
-1. Atualize `VITE_BACKEND_URL` com URL do backend em produção
-2. Execute `npm run build`
-3. Deploy da pasta `dist/`
+1. **Conecte seu repositório GitHub ao Netlify**
+2. **Configure Build Settings**:
+   - Build command: `npm run build`
+   - Publish directory: `dist`
+3. **Adicione Variáveis de Ambiente**:
+   - `API_URL`: URL da sua API externa
+   - `API_TOKEN`: Token de autenticação
+4. **Deploy!**
 
-### Providers Recomendados
+✨ **Guides completos**:
+- 📖 [Guia Rápido Netlify](./NETLIFY_QUICKSTART.md) - 5 minutos
+- 📖 [Guia Completo Netlify](./NETLIFY_DEPLOY.md) - Detalhado
 
-- **Vercel** - Frontend e Backend
-- **Heroku** - Backend
-- **Netlify** - Frontend
-- **Railway** - Backend
+#### Vantagens do Netlify
+
+- ✅ **Gratuito** para portfolios
+- ✅ **Serverless Functions** incluídas (substitui Express)
+- ✅ **Deploy automático** com GitHub
+- ✅ **HTTPS** automático
+- ✅ **CDN global** integrado
+- ✅ **Deploy previews** para PRs
+
+### 🔧 Outras Opções
+
+#### Vercel
+Deploy separado de frontend e backend.
+- Frontend: `vercel --prod`
+- Backend: Deploy do diretório `server/`
+
+#### Heroku
+- Backend: `git subtree push --prefix server heroku main`
+- Frontend: Deploy normal
+
+📖 [Guia completo de deploy](./DEPLOY_GUIDE.md)
 
 ## 🆘 Troubleshooting
 
@@ -230,9 +255,14 @@ cd server && npm run dev
 
 ## 📚 Documentação
 
-- [Arquitetura Completa](./ARCHITECTURE.md)
-- [Backend API](./server/README.md)
-- [Segurança](./SECURITY.md)
+- 🚀 [Guia Rápido - Netlify](./NETLIFY_QUICKSTART.md) - Deploy em 5 minutos
+- 📖 [Deploy Netlify Completo](./NETLIFY_DEPLOY.md) - Guia detalhado
+- 🏗️ [Arquitetura Completa](./ARCHITECTURE.md) - Como funciona
+- 🔧 [Backend API](./server/README.md) - Documentação do servidor
+- 🌐 [Deploy Geral](./DEPLOY_GUIDE.md) - Outras plataformas
+- 🧪 [Testes de API](./API_TESTS.md) - Como testar
+- ⚡ [Quick Start](./QUICKSTART.md) - Começar em 5 minutos
+- 🔐 [Segurança](./SECURITY.md)
 
 ## 📄 Licença
 
