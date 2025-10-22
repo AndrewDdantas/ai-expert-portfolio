@@ -5,6 +5,7 @@ Este é o backend interno do projeto que atua como proxy seguro entre o frontend
 ## 🔒 Segurança
 
 O backend protege:
+
 - **Token de autenticação da API externa**: Nunca exposto no código frontend
 - **URL da API externa**: Mantida privada no servidor
 - **Credenciais**: Armazenadas apenas no servidor via variáveis de ambiente
@@ -19,11 +20,13 @@ npm install
 ## ⚙️ Configuração
 
 1. Copie o arquivo `.env.example` para `.env`:
+
 ```bash
 cp .env.example .env
 ```
 
 2. Edite o arquivo `.env` com suas credenciais reais:
+
 ```bash
 API_URL=https://sua-api-externa.com
 API_TOKEN=seu-token-secreto-aqui
@@ -33,11 +36,13 @@ PORT=3001
 ## 🚀 Executar
 
 ### Modo desenvolvimento (com auto-reload)
+
 ```bash
 npm run dev
 ```
 
 ### Modo produção
+
 ```bash
 npm start
 ```
@@ -45,12 +50,15 @@ npm start
 ## 📡 Endpoints Disponíveis
 
 ### Health Check
+
 ```
 GET /api/health
 ```
+
 Verifica se o servidor está funcionando e se as variáveis de ambiente estão configuradas.
 
 **Resposta:**
+
 ```json
 {
   "status": "ok",
@@ -60,12 +68,15 @@ Verifica se o servidor está funcionando e se as variáveis de ambiente estão c
 ```
 
 ### AI Chat
+
 ```
 POST /api/ai-chat
 ```
+
 Processa mensagens para o chat com IA.
 
 **Body:**
+
 ```json
 {
   "message": "Sua pergunta aqui"
@@ -73,6 +84,7 @@ Processa mensagens para o chat com IA.
 ```
 
 **Resposta:**
+
 ```json
 {
   "output": "Resposta da IA"
@@ -80,12 +92,15 @@ Processa mensagens para o chat com IA.
 ```
 
 ### Access Counter
+
 ```
 GET /api/access-counter
 ```
+
 Retorna estatísticas de acessos ao portfolio.
 
 **Resposta:**
+
 ```json
 {
   "totalVisits": 1234,

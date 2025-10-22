@@ -43,26 +43,28 @@ Este projeto agora utiliza uma arquitetura de **Backend Proxy** para proteger cr
 ## 🔐 Segurança
 
 ### ❌ Antes (Inseguro)
+
 ```typescript
 // Frontend expunha credenciais
 const token = import.meta.env.VITE_API_TOKEN; // Exposto no bundle!
-const apiUrl = import.meta.env.VITE_API_URL;  // Exposto no bundle!
+const apiUrl = import.meta.env.VITE_API_URL; // Exposto no bundle!
 
 fetch(apiUrl, {
-  headers: { 'Authorization': token } // Token visível no browser!
-})
+  headers: { Authorization: token }, // Token visível no browser!
+});
 ```
 
 ### ✅ Agora (Seguro)
+
 ```typescript
 // Frontend não tem acesso às credenciais
-const backendUrl = 'http://localhost:3001'; // Apenas URL do nosso backend
+const backendUrl = "http://localhost:3001"; // Apenas URL do nosso backend
 
 fetch(`${backendUrl}/api/ai-chat`, {
-  method: 'POST',
-  body: JSON.stringify({ message: 'Olá' })
+  method: "POST",
+  body: JSON.stringify({ message: "Olá" }),
   // Sem token! Backend adiciona automaticamente
-})
+});
 ```
 
 ## 📂 Estrutura de Arquivos
@@ -108,6 +110,7 @@ cp .env.example .env
 ### 2. Executar Desenvolvimento
 
 #### Opção A: Tudo junto (Recomendado)
+
 ```bash
 # Na raiz do projeto
 npm install -g concurrently  # Instalar se não tiver
@@ -115,6 +118,7 @@ npm run dev:all              # Roda frontend + backend
 ```
 
 #### Opção B: Separado
+
 ```bash
 # Terminal 1 - Backend
 cd server
@@ -143,15 +147,15 @@ npm run dev
 
 ```javascript
 // Frontend
-const response = await fetch('http://localhost:3001/api/ai-chat', {
-  method: 'POST',
-  body: JSON.stringify({ message: 'Olá' })
+const response = await fetch("http://localhost:3001/api/ai-chat", {
+  method: "POST",
+  body: JSON.stringify({ message: "Olá" }),
 });
 
 // Backend (automático)
-fetch('https://api-externa.com/ai-chat', {
-  headers: { 'Authorization': process.env.API_TOKEN },
-  body: JSON.stringify({ message: 'Olá' })
+fetch("https://api-externa.com/ai-chat", {
+  headers: { Authorization: process.env.API_TOKEN },
+  body: JSON.stringify({ message: "Olá" }),
 });
 ```
 
@@ -166,12 +170,14 @@ fetch('https://api-externa.com/ai-chat', {
 ## 📝 Variáveis de Ambiente
 
 ### Frontend (.env na raiz)
+
 ```bash
 # Apenas a URL do nosso backend local
 VITE_BACKEND_URL=http://localhost:3001
 ```
 
 ### Backend (server/.env)
+
 ```bash
 # Credenciais sensíveis (NUNCA commitar!)
 API_URL=https://api-externa.com
@@ -184,6 +190,7 @@ PORT=3001
 ### ⚠️ NUNCA faça commit do arquivo `.env`!
 
 O `.gitignore` já está configurado para ignorar:
+
 - `.env`
 - `server/.env`
 - Qualquer arquivo `.env.*` (exceto `.env.example`)
@@ -191,6 +198,7 @@ O `.gitignore` já está configurado para ignorar:
 ### ✅ Sempre use `.env.example`
 
 Para compartilhar configuração sem expor credenciais:
+
 - Mantenha `.env.example` com valores de exemplo
 - Commite apenas `.env.example`
 - Cada desenvolvedor copia e preenche suas credenciais
@@ -198,16 +206,19 @@ Para compartilhar configuração sem expor credenciais:
 ## 🌐 Deploy em Produção
 
 ### Backend
+
 1. Configure variáveis de ambiente no serviço de hosting
 2. Não use arquivos `.env` em produção
 3. Use secrets/environment do provider (Vercel, Heroku, etc)
 
 ### Frontend
+
 1. Atualizar `VITE_BACKEND_URL` para URL do backend em produção
 2. Build: `npm run build`
 3. Deploy dos arquivos estáticos
 
 ### Exemplo (Vercel)
+
 ```bash
 # Backend
 vercel env add API_URL
@@ -220,6 +231,7 @@ vercel env add VITE_BACKEND_URL
 ## 🔍 Testando
 
 ### Testar Backend
+
 ```bash
 # Health check
 curl http://localhost:3001/api/health
@@ -231,6 +243,7 @@ curl -X POST http://localhost:3001/api/ai-chat \
 ```
 
 ### Testar Frontend
+
 1. Abra http://localhost:8080
 2. Vá para seção "Converse com IA"
 3. Envie uma mensagem
@@ -244,13 +257,16 @@ curl -X POST http://localhost:3001/api/ai-chat \
 ## 🆘 Troubleshooting
 
 ### Erro: "Cannot connect to backend"
+
 - Verifique se o backend está rodando na porta 3001
 - Execute: `cd server && npm run dev`
 
 ### Erro: "API não configurada"
+
 - Verifique se o arquivo `server/.env` existe
 - Confirme se `API_URL` e `API_TOKEN` estão definidos
 
 ### CORS Error
+
 - Backend já tem CORS habilitado
 - Se persistir, verifique se frontend está em http://localhost:8080

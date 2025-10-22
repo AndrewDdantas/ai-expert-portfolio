@@ -23,7 +23,9 @@ export default defineConfig(({ mode }) => {
     },
     define: {
       // Apenas a URL do backend local (não expõe credenciais!)
-      "import.meta.env.VITE_BACKEND_URL": JSON.stringify(env.VITE_BACKEND_URL || "http://localhost:3001"),
+      "import.meta.env.VITE_BACKEND_URL": JSON.stringify(
+        env.VITE_BACKEND_URL || "http://localhost:3001"
+      ),
     },
   };
 });
