@@ -24,6 +24,27 @@ const Projects = () => {
       technologies: ["Streamlit", "Python", "Pandas"],
       liveUrl: "https://gerar-certificado-d-g.streamlit.app/",
     },
+    {
+      title: "Dashboard de Análise de Vendas",
+      description: "Projeto de análise de vendas utilizando PowerBI.",
+      image: "/Analise_de_Vendas.jpeg",
+      technologies: ["PowerBI", "SQL", "Excel"],
+      liveUrl: "https://drive.google.com/file/d/1Uu0V_kvI0EriTINjbguFSlFQYTxLKt3M/view?usp=sharing",
+    },
+    {
+      title: "Dashboard de Análise de Itens Vendidos",
+      description: "Dashboard interativo de vendas da marca Meu Compadre, com visão geral de peças vendidas, pedidos, faturamento e ticket médio. Apresenta análises por estado, produtos mais vendidos, cores, tipos e tamanhos, além da evolução do faturamento diário, facilitando a identificação de padrões e oportunidades de vendas.",
+      image: "/Analise_de_Itens.jpeg",
+      technologies: ["PowerBI", "SQL", "Excel"],
+      liveUrl: "https://drive.google.com/file/d/1FuLh6QoaYB0edyk8UzHDAgBCxpqrr2L-/view?usp=sharing",
+    },
+    {
+      title: "Dashboard de Vendas",
+      description: "Dashboard de análise de vendas que apresenta os principais indicadores do negócio, como faturamento, comissão e lucro, com filtros por ano e mês. Inclui visualizações de desempenho mensal, distribuição geográfica das vendas, ranking de vendedores e produtos mais vendidos, permitindo identificar tendências, performance comercial e oportunidades de crescimento.",
+      image: "/Analise_de_Vendas_Looker.jpeg",
+      technologies: ["PowerBI", "SQL", "Excel"],
+      liveUrl: "https://drive.google.com/file/d/1PJ3IIOacKo-cfqsBHy_duUShYOYCX3FE/view?usp=sharing",
+    }
   ];
 
   return (
@@ -42,7 +63,7 @@ const Projects = () => {
           {projects.map((project, index) => (
             <div
               key={index}
-              className="animate-fade-in-up"
+              className="animate-fade-in-up h-full"
               style={{ animationDelay: `${index * 0.1}s` }}
             >
               <ProjectCard {...project} />

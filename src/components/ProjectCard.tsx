@@ -1,6 +1,7 @@
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { ExternalLink, Github } from "lucide-react";
+import { ExternalLink, Github, ChevronDown, ChevronUp } from "lucide-react";
 
 interface ProjectCardProps {
   title: string;
@@ -12,6 +13,8 @@ interface ProjectCardProps {
   featured?: boolean;
 }
 
+const DESCRIPTION_LIMIT = 100;
+
 const ProjectCard = ({
   title,
   description,
@@ -21,9 +24,15 @@ const ProjectCard = ({
   githubUrl,
   featured = false,
 }: ProjectCardProps) => {
+  const [expanded, setExpanded] = useState(false);
+  const isLong = description.length > DESCRIPTION_LIMIT;
+  const displayText = isLong && !expanded
+    ? description.slice(0, DESCRIPTION_LIMIT).trimEnd() + "..."
+    : description;
+
   return (
     <Card
-      className={`group overflow-hidden shadow-card hover:shadow-glow transition-all duration-500 transform hover:-translate-y-2 glass ${
+      className={`group overflow-hidden shadow-card hover:shadow-glow transition-all duration-500 transform hover:-translate-y-2 glass flex flex-col h-full ${
         featured ? "ring-2 ring-primary/50" : ""
       }`}
     >
@@ -46,16 +55,29 @@ const ProjectCard = ({
       </div>
 
       {/* Project Content */}
-      <div className="p-6">
+      <div className="p-6 flex flex-col flex-1">
         <h3 className="text-xl font-bold mb-2 group-hover:text-primary transition-colors">
           {title}
         </h3>
-        <p className="text-muted-foreground mb-4 leading-relaxed">
-          {description}
+        <p className="text-muted-foreground mb-1 leading-relaxed">
+          {displayText}
         </p>
+        {isLong && (
+          <button
+            onClick={() => setExpanded(!expanded)}
+            className="text-primary text-sm font-medium flex items-center gap-1 hover:underline mb-3 cursor-pointer"
+          >
+            {expanded ? (
+              <>Ver menos <ChevronUp className="h-3 w-3" /></>
+            ) : (
+              <>Ver mais <ChevronDown className="h-3 w-3" /></>
+            )}
+          </button>
+        )}
+        {!isLong && <div className="mb-3" />}
 
         {/* Technologies */}
-        <div className="flex flex-wrap gap-2 mb-6">
+        <div className="flex flex-wrap gap-2 mb-6 mt-auto">
           {technologies.map((tech) => (
             <span
               key={tech}
